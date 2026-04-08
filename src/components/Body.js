@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Bannner from "./Banner";
 import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
+import { Link } from "react-router";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -31,8 +32,6 @@ const Body = () => {
 
   return (
     <div className="container">
-      <Bannner data={cuisines} />
-
       <div className="filter">
         <div className="search">
           <input
@@ -70,9 +69,18 @@ const Body = () => {
         </div>
       </div>
 
+      <Bannner data={cuisines} />
+      <hr />
+
+      <h2>Restaurants with online food delivery in Pune</h2>
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            to={"/restaurants/" + restaurant.info.id}
+            key={restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

@@ -1,18 +1,19 @@
 html {
-  font-family: "Outfit", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 body {
   padding: 0;
   margin: 0;
+  font-weight: 600;
 }
 
 .container {
-  padding: 0 120px;
+  padding: 0 140px;
 }
 
 .app {
-  background-color: rgb(241, 241, 241);
+  /* padding: 0 10px; */
 }
 
 .header {
@@ -21,16 +22,28 @@ body {
   align-items: center;
   background-color: #fff;
   padding: 0px 60px;
+  box-shadow: 0px 0px 50px rgb(220, 220, 220);
 }
 
 .logo img {
-  height: 70px;
+  height: 60px;
+}
+
+.logo:hover {
+  transform:scale(1.2);
+  transition: 0.2s ease;
+}
+
+.nav-links > a{
+  color: red;
 }
 
 .nav-links ul {
   display: flex;
   align-items: center;
   list-style-type: none;
+  margin: 0;
+  padding: 10px 0px;
 }
 
 .nav-links ul li {
@@ -40,10 +53,31 @@ body {
   font-weight: 500;
 }
 
-.nav-links ul li:hover {
+.nav-links ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-links ul a:hover {
   cursor: pointer;
   color: rgb(255, 157, 0);
   transition: 0.2s ease-in;
+}
+
+.login-btn {
+  padding: 10px 30px;
+  cursor: pointer;
+  font-size: 17px;
+  background-color: blueviolet;
+  color: #fff;
+  border: 0;
+  font-family: inherit;
+  min-width: 120px;
+}
+
+.login-btn:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-out;
 }
 
 .filter {
@@ -77,13 +111,17 @@ body {
 .res-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 0;
+  justify-content: space-between;
+}
+
+.res-container a {
+  text-decoration: none;
 }
 
 .res-card {
-  width: 280px;
-  margin: 10px 10px;
+  width: 260px;
+  margin: 15px 0px;
+  font-weight: 500;
 }
 .res-card:hover {
   cursor: pointer;
@@ -92,7 +130,7 @@ body {
 }
 
 .res-card p {
-  margin: 6px 4px 0 0;
+  margin: 8px 4px 0 0;
 }
 
 .res-img img {
@@ -104,25 +142,27 @@ body {
 
 .res-info {
   padding: 10px 20px;
-  color: #777;
+  color: #666;
 }
 
 .res-info h3 {
   color: #000;
   margin: 0;
   padding: 0;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 18px;
 }
 
 .res-rating {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
-  font-weight: 500;
+  font-weight: 700;
   line-height: 0.5;
   color: #000;
+}
 
+.res-info p {
+  text-overflow: ellipsis;
 }
 
 .top-rated button {
@@ -135,25 +175,106 @@ body {
   cursor: pointer;
 }
 
-.login-btn {
-  padding: 10px 30px;
-  cursor: pointer;
-  font-size: 17px;
-  background-color: blueviolet;
-  color: #fff;
-  border: 0;
-  font-family: inherit;
-  min-width: 130px;
-}
-
-.login-btn:hover {
-  transform: scale(1.05);
-  transition: 0.2s ease-out;
-}
-
 .shimmer-card {
   width: 280px;
   height: 200px;
   margin: 10px 5px;
   background-color: rgb(222, 222, 222);
+}
+
+.banner-img {
+  display: flex;
+  overflow: auto;
+}
+
+.banner-img img {
+  width: 140px;
+  margin: 10px;
+}
+
+hr {
+  border-top: 1px solid #f0f0f0;
+}
+
+.container-fluid {
+  padding: 30px 340px;
+}
+
+.menu-card {
+  background-color: #fff;
+  border: 1px solid #e1e0e8;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.menu-card-outer {
+  background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
+  padding: 0px 16px 16px 16px;
+}
+
+.menu-heading {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.menu-card p {
+  margin: 15px 0px 0px 0px;
+}
+
+.menu-card ul {
+  padding: 0 0 0 20px;
+}
+
+.div-hr{
+  z-index: -11;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: #ff5200;
+  font-size: 14px;
+  border-top: 1px solid #e1e0e8;
+  padding: 14px 20px;
+  background: linear-gradient(278deg, rgba(255, 237, 239, 0.9) 6.25%, rgba(255, 255, 255, 0) 33.99%, rgba(255, 255, 255, 0) 93.75%)
+}
+
+.cuisines {
+  color: #ff5200;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.deals {
+  display: flex;
+  overflow: auto;
+  align-items: center;
+}
+
+.offer-card {
+  display: flex;
+  align-items: center;
+  justify-content: content-start;
+  padding: 10px 20px;
+  border: 1px solid #e1e0e8;
+  border-radius: 20px;
+  min-width: 250px;
+  margin-right: 20px;
+}
+
+.offer-card img {
+  width: 50px;
+  margin-right: 16px;
+}
+
+.offer-card span {
+  font-size: 14px;
+  color: #888;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
 }

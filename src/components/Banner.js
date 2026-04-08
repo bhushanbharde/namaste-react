@@ -5,12 +5,12 @@ const Bannner = (props) => {
   // console.log(cuisines);
 
   return (
-    <div>
-      <h3>What's on your mind?</h3>
-      <div>
-        {cuisines.map((item) => {
-          <img src={CDN_URL + item.imageId} alt="" />
-        })}
+    <div className="banner">
+      <h2>What's on your mind?</h2>
+      <div className="banner-img">
+        {cuisines.map((item) => (
+          <img key={item.id} src={CDN_URL + item.imageId} alt={item.id} />
+        ))}
       </div>
     </div>
   );
