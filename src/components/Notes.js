@@ -1,16 +1,20 @@
 const Notes = () => {
-    return (
-        <div className="container">
-            <h1>Notes: React JS</h1>
-            <div className="episode">
-            <h2>Episode 09</h2>
-            <p>
-                Chunking, Code splitting, Dynamic bundling, lazy loading, on demand loading
-            </p>
-            <p>Lazy Loading with Suspense</p>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="px-60 py-10">
+      <h1 className="text-3xl py-3">Notes: Namaste React</h1>
+      <div className="bg-amber-200 p-4 mb-4">
+        <h2 className="text-xl my-2">Episode 08</h2>
+      </div>
+      <div className="bg-amber-200 p-4 mb-4">
+        <h2 className="text-xl my-2">Episode 09</h2>
+        <p className="text-gray-600">
+          Chunking, Code splitting, Dynamic bundling, lazy loading, on demand
+          loading
+        </p>
+        <p className="text-gray-600">Lazy Loading with Suspense</p>
+      </div>
+    </div>
+  );
+};
 
 export default Notes;
