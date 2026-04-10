@@ -3,31 +3,34 @@ import Bannner from "./Banner";
 import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantData from "../utils/useRestaurantData";
 
-const Body = () => {
+const Home = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [cuisines, setCuisines] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const onlineStatus = useOnlineStatus();
+  const json = useRestaurantData();
+
   useEffect(() => {
-    fetchData();
-  }, []);
+    const resList = json?.data?.cards?.find(
+      (c) => c?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    )?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.636490590050606&lng=73.73401521762636&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const response = await data.json();
-    const resList =
-      response.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
-    setCuisines(response.data.cards[0].card.card.imageGridCards.info);
-    setListOfRestaurants(resList);
-    setFilteredRestaurants(resList);
-  };
+    if (resList) {
+      setListOfRestaurants(resList);
+      setFilteredRestaurants(resList);
+    }
+  }, [json]);
 
-  if (listOfRestaurants.length == 0) {
+  if (!listOfRestaurants.length) {
     return <Shimmer />;
+  }
+
+  if (onlineStatus === false) {
+    return <h1>You are offline!</h1>;
   }
 
   return (
@@ -37,18 +40,14 @@ const Body = () => {
           <input
             type="search"
             value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <button
             onClick={() => {
-              const filteredRestaurants = listOfRestaurants.filter((res) =>
-                res.info.name
-                  .toLowerCase()
-                  .includes(searchText.toLocaleLowerCase())
+              const filtered = listOfRestaurants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setFilteredRestaurants(filteredRestaurants);
+              setFilteredRestaurants(filtered);
             }}
           >
             Search
@@ -58,10 +57,10 @@ const Body = () => {
         <div className="top-rated">
           <button
             onClick={() => {
-              const filterdList = listOfRestaurants.filter(
+              const filtered = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4.3
               );
-              setFilteredRestaurants(filterdList);
+              setFilteredRestaurants(filtered);
             }}
           >
             Top Rated Restaurants
@@ -69,10 +68,10 @@ const Body = () => {
         </div>
       </div>
 
-      <Bannner data={cuisines} />
       <hr />
 
       <h2>Restaurants with online food delivery in Pune</h2>
+
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
           <Link
@@ -87,4 +86,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Home;

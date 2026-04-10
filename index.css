@@ -9,11 +9,11 @@ body {
 }
 
 .container {
-  padding: 0 140px;
+  padding: 20px 140px;
 }
 
 .app {
-  /* padding: 0 10px; */
+  padding: 0px;
 }
 
 .header {
@@ -109,9 +109,9 @@ body {
 }
 
 .res-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 }
 
 .res-container a {
@@ -119,8 +119,6 @@ body {
 }
 
 .res-card {
-  width: 260px;
-  margin: 15px 0px;
   font-weight: 500;
 }
 .res-card:hover {
@@ -277,4 +275,49 @@ hr {
 h3 {
   margin: 0;
   padding: 0;
+}
+
+.user-card {
+  border: 1px solid #888;
+  padding: 10px;
+}
+
+.footer {
+  background-color: #e1e0e8;
+  /* height: 200px; */
+  padding: 20px 120px;
+}
+
+.footer_widget {
+  display: flex;
+  align-items: start;
+}
+
+.footer-link ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.footer-link ul li {
+  margin: 10px;
+}
+
+.footer-link ul li a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+}
+
+.footer-link-head {
+  font-size: 18px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo h1 {
+  margin: 0;
+  margin-left: 10px;
 }
