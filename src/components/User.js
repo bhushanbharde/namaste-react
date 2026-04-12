@@ -3,14 +3,14 @@ import React from "react";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    console.log("grandchild constructor called");
+    // console.log("grandchild constructor called");
 
     this.state = {
       count: 0,
     };
   }
   render() {
-    console.log("grandchild render called");
+    // console.log("grandchild render called");
 
     const { name, location } = this.props;
     const { count } = this.state;
@@ -24,7 +24,7 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    console.log("grandchild componentDidMount called");
+    // console.log("grandchild componentDidMount called");
   }
 }
 

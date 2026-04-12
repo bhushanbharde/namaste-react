@@ -6,11 +6,11 @@ class AboutClass extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("parent constructor called");
+    // console.log("parent constructor called");
   }
 
   render() {
-    console.log("parent render called");
+    // console.log("parent render called");
     return (
       <div>
         <div className="container">
@@ -22,7 +22,7 @@ class AboutClass extends React.Component {
   }
 
   componentDidMount() {
-    console.log("parent componentDidMount called");
+    // console.log("parent componentDidMount called");
   }
 }
 

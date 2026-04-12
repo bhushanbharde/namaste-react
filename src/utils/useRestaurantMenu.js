@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "./constants";
+import restaurantMenuData from "./restaurantData.json"
 
 const useRestaurantMenu = (resId) => {
-  const [resInfo, setResInfo] = useState(null);
+  const [resMenu, setResInfo] = useState(null);
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(API_URL);
-    const json = await data.json();
+    // console.log(restaurantMenuData);
+    const categories = restaurantMenuData?.cardGroupMap?.REGULAR?.cards;
 
-    const restList =
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
+    // const categories = resCards.filter(
+    //   (section) =>
+    //     section?.card?.card?.["@type"] ===
+    //     "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    // );
 
-    const resInfo = restList.find((res) => res.info.id == Number(resId));
-    setResInfo(resInfo);
+    // console.log(categories);
+    setResInfo(categories);
   };
 
-  return resInfo;
+  return resMenu;
 };
 
 export default useRestaurantMenu;

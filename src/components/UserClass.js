@@ -4,14 +4,14 @@ import User from "./User";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    console.log("child constructor called");
+    // console.log("child constructor called");
 
     this.state = {
       count: 0,
     };
   }
   render() {
-    console.log("child render called");
+    // console.log("child render called");
 
     const { name, location } = this.props;
     const { count } = this.state;
@@ -34,7 +34,7 @@ class UserClass extends React.Component {
   }
 
   componentDidMount() {
-    console.log("child componentDidMount called");
+    // console.log("child componentDidMount called");
   }
 }
 

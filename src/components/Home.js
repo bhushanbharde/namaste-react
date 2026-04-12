@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Bannner from "./Banner";
 import Shimmer from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { PromotedWithLabel } from "./RestaurantCard";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantData from "../utils/useRestaurantData";
@@ -14,6 +14,9 @@ const Home = () => {
 
   const onlineStatus = useOnlineStatus();
   const json = useRestaurantData();
+  // console.log(json);
+
+  const RestaurantCardPromoted = PromotedWithLabel(RestaurantCard);
 
   useEffect(() => {
     const resList = json?.data?.cards?.find(
@@ -88,7 +91,11 @@ const Home = () => {
             to={"/restaurants/" + restaurant.info.id}
             key={restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant?.info?.aggregatedDiscountInfoV3?.subHeader ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
