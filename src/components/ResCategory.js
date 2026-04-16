@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { OFFER_ICON, OFFER_ICON_1 } from "../utils/constants";
-import MenuItem from "./MenuItem";
+import ItemList from "./ItemList";
 
-const ResCategory = (props) => {
+const ResCategory = ({ data, showItems, setShowIndex }) => {
   // console.log(props);
 
-  const { title, itemCards } = props.data?.card?.card;
-  const [showItem, setShowItem] = useState(false);
+  const { title, itemCards } = data?.card?.card;
 
   const handleClick = () => {
-    setShowItem(!showItem)
-  }
+    setShowIndex();
+  };
 
   return (
     <div className="overflow-hidden">
@@ -30,7 +29,7 @@ const ResCategory = (props) => {
         <div className="">
           {itemCards.map(
             (item) =>
-              showItem && <MenuItem key={item.card.info.id} menu={item} />
+              showItems && <ItemList key={item.card.info.id} menu={itemCards} />
           )}
         </div>
       </div>

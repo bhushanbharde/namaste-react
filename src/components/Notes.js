@@ -1,7 +1,7 @@
 const Notes = () => {
   return (
-    <div className="px-60 py-10">
-      <h1 className="text-3xl py-3">Notes: Namaste React</h1>
+    <div className="px-60 py-20">
+      <h1 className="text-3xl font-semibold mb-4">Notes: Namaste React</h1>
       <div className="bg-amber-200 p-4 mb-4">
         <h2 className="text-xl my-2">Episode 08</h2>
       </div>

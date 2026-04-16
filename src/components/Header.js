@@ -1,11 +1,19 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserConext from "../utils/UserConext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser } = useContext(UserConext);
+  
+  //Subcribing to the store using a Selector
+  const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   return (
     <div className="flex justify-between items-center shadow-2xl px-20 py-2">
@@ -34,14 +42,28 @@ const Header = () => {
           <li className="mx-5 hover:text-amber-600">
             <Link to="/notes">Notes</Link>
           </li>
-          <button
-            className="bg-amber-500 rounded-lg px-4 py-2 w-20 hover:cursor-pointer hover:bg-amber-600"
-            onClick={() => {
-              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
-            }}
-          >
-            {btnName}
-          </button>
+          <li className="hidden">
+            <button
+              className="bg-amber-500 rounded-lg px-4 py-2 w-20 hover:cursor-pointer hover:bg-amber-600"
+              onClick={() => {
+                btnName === "Login"
+                  ? setBtnName("Logout")
+                  : setBtnName("Login");
+              }}
+            >
+              {btnName}
+            </button>
+          </li>
+          <li className="mx-5">
+            <i className="fa-solid fa-user font-bold mr-1"></i>
+            {loggedInUser}
+          </li>
+          <li className="mx-5">
+            <Link to="/cart">
+              <i className="fa-solid fa-cart-shopping font-2xl"></i>(
+              {cartItems.length})
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

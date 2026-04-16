@@ -3,11 +3,13 @@ import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ResCategory from "./ResCategory";
 import { useEffect, useState } from "react";
-import { OFFER_ICON, OFFER_ICON_1 } from "../utils/constants";
+import { CDN_URL, OFFER_ICON, OFFER_ICON_1 } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const [showItems, setShowItems] = useState(false);
+  const [showIndex, setShowIndex] = useState(0);
 
   if (resInfo == null) return <Shimmer />;
 
@@ -36,8 +38,6 @@ const RestaurantMenu = () => {
     logoCtx,
     totalRatingsString,
   } = resAddress.card.card.info;
-
-  console.log(loyaltyDiscoverPresentationInfo);
 
   return (
     <div className="py-10 px-80">
@@ -70,7 +70,10 @@ const RestaurantMenu = () => {
             </ul>
           </div>
           <div className="rounded-b-[20px] text-[#ff5200] text-[14px] border-t border-[#e1e0e8] px-5 py-[14] bg-[linear-gradient(278deg,rgba(255,237,239,0.9)_6.25%,rgba(255,255,255,0)_33.99%,rgba(255,255,255,0)_93.75%)]">
-            <span>{loyaltyDiscoverPresentationInfo.freedelMessage}</span>
+            <div className="flex items-center">
+              <img className="w-12 mr-3" src={CDN_URL + loyaltyDiscoverPresentationInfo?.logoCtx?.logo} />
+              <span>{loyaltyDiscoverPresentationInfo.freedelMessage}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -102,6 +105,7 @@ const RestaurantMenu = () => {
         </div>
       </div>
 
+      {/* Menu Section */}
       <div>
         <h3 className="py-4 text-center mt-8">
           <i className="mx-2 fa-regular fa-circle-left"></i>
@@ -116,8 +120,13 @@ const RestaurantMenu = () => {
           />
         </div>
         <div>
-          {categories.map((item) => (
-            <ResCategory key={item.card.card.categoryId} data={item} />
+          {categories.map((category, index) => (
+            <ResCategory
+              key={category.card.card.categoryId}
+              data={category}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+            />
           ))}
         </div>
       </div>
