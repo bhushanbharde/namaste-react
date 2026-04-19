@@ -1,5 +1,3 @@
-import Header from "./Header";
-
 const Contact = () => {
   return (
     <div className="px-60 py-20">

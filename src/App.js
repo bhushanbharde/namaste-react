@@ -12,6 +12,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Collection from "./components/Collection";
 
 const AppLayout = () => {
   return (
@@ -57,6 +58,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/collections/:collectionId",
+        element: <Collection />,
       },
     ],
     errorElement: <Error />,

@@ -6,6 +6,7 @@ const ResCategory = ({ data, showItems, setShowIndex }) => {
   // console.log(props);
 
   const { title, itemCards } = data?.card?.card;
+  console.log(itemCards);
 
   const handleClick = () => {
     setShowIndex();
@@ -27,9 +28,8 @@ const ResCategory = ({ data, showItems, setShowIndex }) => {
         </div>
 
         <div className="">
-          {itemCards.map(
-            (item) =>
-              showItems && <ItemList key={item.card.info.id} menu={itemCards} />
+          {showItems && (
+            <ItemList key={itemCards?.card?.info?.id} menu={itemCards} />
           )}
         </div>
       </div>

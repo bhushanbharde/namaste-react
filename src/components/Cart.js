@@ -18,12 +18,12 @@ const Cart = () => {
 
   if (cartItems.length == 0) {
     return (
-      <div className="px-60 py-20 text-center">
+      <div className="px-60 py-20 text-center h-[500]">
         <h1 className="text-xl font-semibold">Your cart is empty</h1>
-        <p className="text-gray-500 font-sm my-2 font-light">
+        <p className="text-gray-500 font-sm my-4 font-light">
           You can go to home page to view more restaurants
         </p>
-        <button className="px-4 py-2 mt-4 bg-[#ff5200] text-white hover:cursor-pointer uppercase">
+        <button className="px-4 py-2 mt-3 bg-[#ff5200] text-white hover:cursor-pointer uppercase">
           <Link to="/">See restaurants near you</Link>
         </button>
       </div>

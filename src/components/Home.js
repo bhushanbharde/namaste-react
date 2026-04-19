@@ -5,6 +5,7 @@ import RestaurantCard, { PromotedWithLabel } from "./RestaurantCard";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantData from "../utils/useRestaurantData";
+import RestaurantContainer from "./RestaurantContainer";
 
 const Home = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -40,7 +41,10 @@ const Home = () => {
   }
 
   return (
-    <div className="px-40 py-14">
+    <div className="px-40">
+      <Bannner data={cuisines} />
+      <hr className="mb-10 border-gray-300" />
+
       <div className="flex justify-between items-center">
         <div className="flex">
           <input
@@ -77,15 +81,11 @@ const Home = () => {
         </div>
       </div>
 
-      <Bannner data={cuisines} />
-
-      <hr className="mt-8 border-gray-300" />
-
-      <h2 className="text-2xl font-semibold my-8">
+      <h2 className="text-2xl font-semibold mt-16 mb-8">
         Restaurants with online food delivery in Pune
       </h2>
 
-      <div className="grid grid-cols-4 gap-8">
+      {/* <div className="grid grid-cols-4 gap-8">
         {filteredRestaurants.map((restaurant) => (
           <Link
             to={"/restaurants/" + restaurant.info.id}
@@ -98,7 +98,9 @@ const Home = () => {
             )}
           </Link>
         ))}
-      </div>
+      </div> */}
+
+      <RestaurantContainer data={filteredRestaurants} />
     </div>
   );
 };

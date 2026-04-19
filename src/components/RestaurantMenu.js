@@ -8,8 +8,8 @@ import { CDN_URL, OFFER_ICON, OFFER_ICON_1 } from "../utils/constants";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
-  const [showItems, setShowItems] = useState(false);
-  const [showIndex, setShowIndex] = useState(0);
+  const [showItems, setShowItems] = useState(true);
+  const [showIndex, setShowIndex] = useState(null);
 
   if (resInfo == null) return <Shimmer />;
 
@@ -35,7 +35,6 @@ const RestaurantMenu = () => {
     cuisines,
     sla,
     loyaltyDiscoverPresentationInfo,
-    logoCtx,
     totalRatingsString,
   } = resAddress.card.card.info;
 
