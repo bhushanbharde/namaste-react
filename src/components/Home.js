@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Bannner from "./Banner";
 import Shimmer from "./Shimmer";
 import RestaurantCard, { PromotedWithLabel } from "./RestaurantCard";
-import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantData from "../utils/useRestaurantData";
 import RestaurantContainer from "./RestaurantContainer";
